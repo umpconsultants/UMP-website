@@ -147,18 +147,18 @@ export function HomePage() {
           <Reveal>
             <SectionTitle
               eyebrow="About UMP"
-              title="A start-up sworn to deliver niche studies in politics & market research."
+              title="A start-up sworn to deliver niche studies in hospitality, construction and business growth."
             />
             <p className="mt-5 text-muted-foreground leading-relaxed">
-              UMP Consultants partners with political parties, government agencies, media,
-              businesses, and organizations — providing analysis based on evidence, accurate primary
-              information, statistics, public opinion, recent developments, market data, surveys,
-              and reliable sources.
+              UMP Consultants partners with hotels, restaurants, real-estate developers, builders,
+              contractors, construction suppliers and growth-focused businesses, providing analysis
+              based on evidence, accurate primary information, statistics, customer feedback, recent
+              developments, market data, surveys and reliable sources.
             </p>
             <p className="mt-4 text-muted-foreground leading-relaxed">
-              We also partner for marketing assignments, promotions, campaign planning, area
-              coverage, event management and strategic initiatives tailored to specific locations,
-              industries, constituencies and audiences.
+              We also partner for hospitality promotions, construction project marketing, area
+              coverage, event management, lead-generation campaigns and strategic initiatives
+              tailored to specific markets, locations, industries and audiences.
             </p>
             <Link
               to="/about"
