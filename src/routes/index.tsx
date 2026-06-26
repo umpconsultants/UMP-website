@@ -87,12 +87,12 @@ export function HomePage() {
               <span className="w-1.5 h-1.5 rounded-full bg-accent" /> Towards Growth
             </p>
             <h1 className="mt-5 text-4xl md:text-6xl font-bold leading-tight animate-fade-in">
-              Research-Driven Consulting <br className="hidden md:block" />
+              Strategic Consulting <br className="hidden md:block" />
               for <span className="text-gradient bg-clip-text">Smarter Growth</span>
             </h1>
             <p className="mt-5 text-white/85 text-lg max-w-2xl animate-fade-in">
-              Market research, surveys, campaign planning, area coverage, promotion, marketing and
-              strategic initiatives — for high-impact decision making.
+              Market intelligence, brand strategy, promotional campaigns, event management and
+              stakeholder engagement for organizations ready to grow with clarity.
             </p>
             <div className="mt-8 flex flex-wrap gap-3 animate-fade-in">
               <Link
@@ -111,9 +111,9 @@ export function HomePage() {
             <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl">
               {[
                 { k: "4", v: "Core Industries" },
-                { k: "6", v: "Services" },
-                { k: "25k+", v: "Surveys Conducted" },
-                { k: "100%", v: "Evidence-Backed" },
+                { k: "8", v: "Core Services" },
+                { k: "25k+", v: "Survey Responses" },
+                { k: "100%", v: "Insight-Led" },
               ].map((s) => (
                 <div
                   key={s.v}
@@ -147,19 +147,37 @@ export function HomePage() {
           <Reveal>
             <SectionTitle
               eyebrow="About UMP"
-              title="A start-up sworn to deliver niche studies in hospitality, construction and business growth."
+              title="A strategic consulting partner for stronger brands and sustainable growth."
             />
             <p className="mt-5 text-muted-foreground leading-relaxed">
-              UMP Consultants partners with hotels, restaurants, real-estate developers, builders,
-              contractors, construction suppliers and growth-focused businesses, providing analysis
-              based on evidence, accurate primary information, statistics, customer feedback, recent
-              developments, market data, surveys and reliable sources.
+              UMP Consultants helps organizations build stronger brands, create meaningful market
+              presence, and achieve sustainable growth. We partner with clients across healthcare
+              and pharmaceutical, construction, and social development sectors with customized
+              solutions rooted in market intelligence, innovative marketing, and stakeholder
+              engagement.
             </p>
             <p className="mt-4 text-muted-foreground leading-relaxed">
-              We also partner for hospitality promotions, construction project marketing, area
-              coverage, event management, lead-generation campaigns and strategic initiatives
-              tailored to specific markets, locations, industries and audiences.
+              Our work spans market research, marketing strategy, brand promotions, event
+              management, business development, communication programs, product launches, awareness
+              campaigns, professional conferences, community outreach and growth strategies.
             </p>
+            <div className="mt-6 grid sm:grid-cols-2 gap-3">
+              {[
+                "Market Research & Business Intelligence",
+                "Marketing & Brand Strategy",
+                "Promotional Campaigns & Activations",
+                "Event Planning & Management",
+                "Healthcare & Pharma Marketing Support",
+                "Construction Sector Market Development",
+                "Social Impact & Community Engagement",
+                "Corporate Communications & Outreach",
+              ].map((service) => (
+                <div key={service} className="flex gap-2 text-sm font-medium text-secondary">
+                  <CheckCircle2 className="text-primary shrink-0 mt-0.5" size={17} />
+                  <span>{service}</span>
+                </div>
+              ))}
+            </div>
             <Link
               to="/about"
               className="mt-6 inline-flex items-center gap-2 text-primary font-semibold hover:gap-3 transition-all"
