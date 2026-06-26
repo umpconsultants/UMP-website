@@ -341,23 +341,6 @@ export function HomePage() {
         </div>
       </Section>
 
-      {/* STATS */}
-      <Section className="bg-muted">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {[
-            { k: "25,000+", v: "Survey responses collected" },
-            { k: "150+", v: "Cities & towns covered" },
-            { k: "60+", v: "Campaigns delivered" },
-            { k: "98%", v: "Client retention" },
-          ].map((s, i) => (
-            <Reveal key={s.v} delay={i * 80} className="card-soft p-6 text-center">
-              <div className="text-3xl md:text-4xl font-bold text-primary">{s.k}</div>
-              <p className="mt-2 text-sm text-muted-foreground">{s.v}</p>
-            </Reveal>
-          ))}
-        </div>
-      </Section>
-
       {/* LATEST BLOGS */}
       <Section>
         <div className="flex items-end justify-between flex-wrap gap-4">

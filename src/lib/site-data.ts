@@ -4,7 +4,7 @@ export const COMPANY = {
   phone: "+91 84213 45120",
   phoneRaw: "918421345120",
   email: "contact@umpconsultants.in",
-  address: "206, Madhyila Heritage, Loni Kalbhor, Pune",
+  address: "206, Madhushila Heritage, Loni Kalbhor, Pune",
 };
 
 export type Industry = {
@@ -361,7 +361,7 @@ export const NEWS: Article[] = [
     title: "UMP Consultants Officially Launches Operations in Pune",
     excerpt:
       "UMP opens its headquarters in Loni Kalbhor, Pune — anchored by a research and field operations team serving four core sectors.",
-    body: "UMP Consultants today announced the formal launch of its operations from 206, Madhyila Heritage, Loni Kalbhor, Pune. The firm brings together research, area coverage and marketing under one roof for clients in hospitals, construction, politics and pharma.",
+    body: "UMP Consultants today announced the formal launch of its operations from 206, Madhushila Heritage, Loni Kalbhor, Pune. The firm brings together research, area coverage and marketing under one roof for clients in hospitals, construction, politics and pharma.",
     date: "May 30, 2026",
     category: "Company",
     image:
