@@ -5,6 +5,9 @@ import { PageBanner, Section } from "@/components/PageBanner";
 import { Reveal } from "@/components/Reveal";
 import { COMPANY, SERVICES } from "@/lib/site-data";
 
+const WEB3FORMS_ACCESS_KEY = "293f1727-8a18-402f-adfd-610abb038615";
+const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
+
 const schema = z.object({
   name: z.string().trim().min(2, "Please enter your name").max(80),
   phone: z
@@ -20,10 +23,12 @@ export function ContactPage() {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const fd = new FormData(e.currentTarget);
+    const form = e.currentTarget;
+    const fd = new FormData(form);
     const data = Object.fromEntries(fd.entries());
     const result = schema.safeParse(data);
     if (!result.success) {
@@ -35,12 +40,42 @@ export function ContactPage() {
       return;
     }
     setErrors({});
+    setSubmitError("");
+    setSent(false);
     setLoading(true);
-    setTimeout(() => {
+
+    const payload = new FormData();
+    payload.append("access_key", WEB3FORMS_ACCESS_KEY);
+    payload.append("subject", "New enquiry from UMP Consultants website");
+    payload.append("from_name", "UMP Consultants Website");
+    payload.append("name", result.data.name);
+    payload.append("phone", result.data.phone);
+    payload.append("email", result.data.email);
+    payload.append("service", result.data.service);
+    payload.append("message", result.data.message);
+
+    try {
+      const response = await fetch(WEB3FORMS_ENDPOINT, {
+        method: "POST",
+        body: payload,
+      });
+      const responseData = (await response.json()) as { success?: boolean; message?: string };
+
+      if (!response.ok || !responseData.success) {
+        throw new Error(responseData.message || "Unable to send your message right now.");
+      }
+
       setLoading(false);
       setSent(true);
-      (e.target as HTMLFormElement).reset();
-    }, 700);
+      form.reset();
+    } catch (error) {
+      setLoading(false);
+      setSubmitError(
+        error instanceof Error
+          ? error.message
+          : "Unable to send your message right now. Please try again.",
+      );
+    }
   };
 
   return (
@@ -99,6 +134,11 @@ export function ContactPage() {
                   <p className="text-sm font-medium">
                     Thanks! Your message is in. We will reply within one business day.
                   </p>
+                </div>
+              )}
+              {submitError && (
+                <div className="p-4 rounded-lg bg-destructive/10 border border-destructive/30 text-destructive text-sm font-medium">
+                  {submitError}
                 </div>
               )}
               <Field label="Name" name="name" error={errors.name} />
