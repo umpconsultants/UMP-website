@@ -1,8 +1,8 @@
 export const COMPANY = {
   name: "UMP Consultants",
   tagline: "Towards Growth",
-  phone: "+91 84213 45120",
-  phoneRaw: "918421345120",
+  phone: "+91 86683 76098",
+  phoneRaw: "918668376098",
   email: "contact@umpconsultants.in",
   address: "206, Madhushila Heritage, Loni Kalbhor, Pune",
 };

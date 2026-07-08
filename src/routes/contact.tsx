@@ -13,7 +13,7 @@ const schema = z.object({
   phone: z
     .string()
     .trim()
-    .regex(/^[+\d\s-]{7,20}$/, "Enter a valid phone number"),
+    .regex(/^\d{10}$/, "Enter a valid 10 digit phone number"),
   email: z.string().trim().email("Enter a valid email").max(120),
   service: z.string().min(1, "Please pick a service"),
   message: z.string().trim().min(10, "Message must be at least 10 characters").max(1000),
@@ -143,7 +143,16 @@ export function ContactPage() {
               )}
               <Field label="Name" name="name" error={errors.name} />
               <div className="grid sm:grid-cols-2 gap-5">
-                <Field label="Phone number" name="phone" error={errors.phone} />
+                <Field
+                  label="Phone number"
+                  name="phone"
+                  type="tel"
+                  error={errors.phone}
+                  inputMode="numeric"
+                  maxLength={10}
+                  pattern="\d{10}"
+                  onInput={limitPhoneInput}
+                />
                 <Field label="Email" name="email" type="email" error={errors.email} />
               </div>
               <div>
@@ -197,16 +206,29 @@ export function ContactPage() {
 function Label({ children }: { children: React.ReactNode }) {
   return <label className="text-sm font-medium text-secondary">{children}</label>;
 }
+
+function limitPhoneInput(e: React.FormEvent<HTMLInputElement>) {
+  e.currentTarget.value = e.currentTarget.value.replace(/\D/g, "").slice(0, 10);
+}
+
 function Field({
   label,
   name,
   type = "text",
   error,
+  inputMode,
+  maxLength,
+  pattern,
+  onInput,
 }: {
   label: string;
   name: string;
   type?: string;
   error?: string;
+  inputMode?: React.HTMLAttributes<HTMLInputElement>["inputMode"];
+  maxLength?: number;
+  pattern?: string;
+  onInput?: React.FormEventHandler<HTMLInputElement>;
 }) {
   return (
     <div>
@@ -214,6 +236,10 @@ function Field({
       <input
         type={type}
         name={name}
+        inputMode={inputMode}
+        maxLength={maxLength}
+        pattern={pattern}
+        onInput={onInput}
         className="mt-1 w-full px-3 py-2.5 rounded-lg border bg-white focus:outline-none focus:ring-2 focus:ring-primary"
       />
       {error && <p className="mt-1 text-xs text-destructive">{error}</p>}
